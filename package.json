@@ -1,0 +1,24 @@
+{
+  "name": "vanilla_js_cat_search",
+  "version": "1.0.0",
+  "description": "programmers > 실력 체크 > 과제관 > [프론트엔드] 고양이 사진 검색 사이트",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/protect-me/vanilla_js_cat_search.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/protect-me/vanilla_js_cat_search/issues"
+  },
+  "homepage": "https://github.com/protect-me/vanilla_js_cat_search#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  }
+}
