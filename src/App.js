@@ -9,6 +9,7 @@ export default class App {
       onSearch: async (keyword) => {
         const loader = new Loader($target); // Loader On
         const response = await api.fetchCats(keyword);
+        console.log(response);
         resultSection.setState(response);
         loader.removeLoader(); // Loader Off
       },

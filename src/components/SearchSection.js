@@ -7,11 +7,6 @@ export default class SearchSection {
     this.render(); // 초기화 후 render 실행
   }
 
-  searchByKeyword(keyword) {
-    if (keyword) {
-      this.onSearch(keyword); // 넘겨받은 keyword를 넣어 onSearch를 실행
-    }
-  }
   render() {
     this.section.innerHTML = ""; // search section 내 기존 내용 초기화
     const wrapper = document.createElement("div");
@@ -29,7 +24,7 @@ export default class SearchSection {
       // if (e.keycode == 13)
       if (e.key == "Enter") {
         const keyword = searchBox.value;
-        this.searchByKeyword(keyword);
+        this.onSearch(keyword);
       }
     });
 

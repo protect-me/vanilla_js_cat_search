@@ -39,3 +39,7 @@
   color: white;
   font-size: 3rem;
 }
+
+.initial-result, .no-result {
+  text-align: center;
+}
