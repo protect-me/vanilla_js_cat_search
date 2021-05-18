@@ -19,7 +19,7 @@ const request = async (url) => {
     } else {
       // 1-2
       const data = await response.json();
-      return data;
+      return data.data;
     }
   } catch (e) {
     // 2

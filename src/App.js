@@ -1,4 +1,5 @@
 import api from "./api/api.js";
+import ResultSection from "./components/ResultSection.js";
 import SearchSection from "./components/SearchSection.js";
 export default class App {
   constructor($target) {
@@ -11,8 +12,11 @@ export default class App {
         const response = await api.fetchCats(keyword);
         if (response) {
           console.log(response);
+          resultSection.setState(response);
         }
       },
     });
+
+    const resultSection = new ResultSection($target, null);
   }
 }
