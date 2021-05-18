@@ -1,3 +1,29 @@
-body {
-  color: red;
+.search-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-box {
+  font-size: 25px;
+  /* border: 1px solid gray; */
+}
+
+.card-container {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  border: 1px solid green;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  margin-left: calc( (100% - (20% * 4)) / 4);  
+  width: 250px;
+  height: 350px;
+  border: 1px solid red;
+}
+.card-image {
+  border: 1px solid blue;
+  height: 70%;
 }
