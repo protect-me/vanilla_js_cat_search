@@ -13,7 +13,7 @@ export default class ResultSection {
     this.render();
   }
   render() {
-    this.section.innerHtml = ""; // result section 초기화
+    this.section.innerHTML = ""; // result section 초기화
     if (this.data) {
       const cardContainer = document.createElement("div");
       cardContainer.className = "card-container";
