@@ -33,6 +33,13 @@ export default class SearchSection {
     const wrapper = document.createElement("div");
     wrapper.className = "wrapper";
 
+    const randomBtn = document.createElement("div");
+    randomBtn.className = "random-btn";
+    randomBtn.innerText = "🐈";
+    randomBtn.addEventListener("click", () => {
+      this.onSearch(null, true);
+    });
+
     const searchBox = document.createElement("input");
     searchBox.className = "search-box";
     searchBox.placeholder = "고양이를 검색해주세요";
@@ -59,7 +66,7 @@ export default class SearchSection {
             e.target.className == "keyword-wrapper" ||
             e.target.className == "keyword-text"
           ) {
-            this.onSearch(keyword);
+            this.onSearch(keyword, false);
           } else if (e.target.className == "delete-history-btn") {
             this.deleteHistoryKeword(keyword);
           }
@@ -84,6 +91,7 @@ export default class SearchSection {
       searchBox.value = "";
     });
 
+    wrapper.appendChild(randomBtn);
     wrapper.appendChild(searchBox);
     wrapper.appendChild(searchHistory);
     this.section.appendChild(wrapper);

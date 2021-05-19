@@ -7,9 +7,14 @@
   justify-content: center;
   align-items: center;
 }
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .search-box {
   font-size: 25px;
-  /* border: 1px solid gray; */
 }
 
 .card-container {
@@ -131,4 +136,10 @@
   color: royalblue;
   background-color: #fff;
   text-align: center;
+}
+
+.random-btn {
+  font-size: 30px;
+  margin-bottom: 10px;
+  cursor: pointer;
 }
