@@ -3,7 +3,6 @@ export default class InfoModal {
     this.data = data;
     this.modalWrapper = document.createElement("div");
     this.modalWrapper.className = "modal-wrapper";
-    console.log("infomodal const");
 
     document.querySelector("#App").appendChild(this.modalWrapper);
     this.render();
@@ -12,9 +11,7 @@ export default class InfoModal {
     this.modalWrapper.remove();
   }
   render() {
-    console.log("infomodal render");
     const { name, origin, temperament, url } = this.data;
-    console.log("origin", origin);
     const engName = name.split(" / ")[0];
     const korName = name.split(" / ")[1];
 

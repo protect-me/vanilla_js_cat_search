@@ -75,7 +75,6 @@
   height: 70%;
   width: 500px;
   padding: 30px;
-  display: flex;
 }
 
 .modal-header {
@@ -103,4 +102,21 @@
   .modal-image {
     width: 70%;
   }
+}
+
+.search-history {
+  display: flex;
+  padding: 0 5px;
+  flex-wrap : wrap;
+  margin-top: 5px;
+}
+.keyword {
+  color: white;
+  background-color: royalblue;
+  border-radius: 5px;
+  padding: 2px 5px;
+  margin-right: 5px;
+}
+.keyword:last-child {
+  margin-right: 0px;
 }
