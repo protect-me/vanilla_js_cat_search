@@ -12,7 +12,9 @@ export default class Card {
     const { name, url } = this.data;
     const cardImage = document.createElement("img");
     cardImage.className = "card-image";
-    cardImage.src = url;
+    // cardImage.src = url;
+    cardImage.classList.add("lazy");
+    cardImage.dataset.src = url;
 
     this.card.appendChild(cardImage);
   }

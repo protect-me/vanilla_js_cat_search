@@ -10,10 +10,29 @@ export default class ResultSection {
     this.data = data;
     $target.appendChild(this.section);
     this.render();
+    this.initiateObserver();
   }
+
   setState(newData) {
     this.data = newData;
     this.render();
+    this.initiateObserver();
+  }
+
+  initiateObserver() {
+    const options = { threshold: 0 };
+    const callback = (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isInterecting) {
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+    const io = new IntersectionObserver(callback, options);
+    const lazyImages = Array.from(document.getElementsByClassName("lazy"));
+    lazyImages.forEach((image) => {
+      io.observe(image);
+    });
   }
 
   render() {
