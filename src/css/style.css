@@ -1,4 +1,6 @@
-
+* {
+  box-sizing: border-box;
+}
 
 .search-section {
   display: flex;
@@ -110,13 +112,23 @@
   flex-wrap : wrap;
   margin-top: 5px;
 }
-.keyword {
+.keyword-wrapper {
   color: white;
   background-color: royalblue;
   border-radius: 5px;
-  padding: 2px 5px;
+  padding: 5px 10px;
   margin-right: 5px;
+  cursor: pointer;
+  display: flex;
 }
 .keyword:last-child {
   margin-right: 0px;
+}
+.delete-history-btn {
+  margin-left: 10px;
+  border-radius: 50%;
+  padding: 0px 4px;
+  color: royalblue;
+  background-color: #fff;
+  text-align: center;
 }

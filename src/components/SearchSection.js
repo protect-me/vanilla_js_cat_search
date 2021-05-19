@@ -6,7 +6,6 @@ export default class SearchSection {
     this.section.className = "search-section";
     this.onSearch = onSearch;
     this.keywordsHistory = keywordsHistory;
-    console.log("keywordsHistory", this.keywordsHistory);
     $target.appendChild(this.section);
     this.render(); // 초기화 후 render 실행
   }
@@ -20,6 +19,13 @@ export default class SearchSection {
       setItem("keywordsHistory", this.keywordsHistory);
       this.render();
     }
+  }
+
+  deleteHistoryKeword(keyword) {
+    const deleteIndex = this.keywordsHistory.indexOf(keyword);
+    this.keywordsHistory.splice(deleteIndex, 1);
+    setItem("keywordsHistory", this.keywordsHistory);
+    this.render();
   }
 
   render() {
@@ -37,13 +43,30 @@ export default class SearchSection {
     searchHistory.className = "search-history";
     if (this.keywordsHistory) {
       this.keywordsHistory.map((keyword) => {
-        const keywordEl = document.createElement("div");
-        keywordEl.className = "keyword";
-        keywordEl.innerText = keyword;
-        keywordEl.addEventListener("click", () => {
-          this.onSearch(keyword);
+        const keywordWrapper = document.createElement("div");
+        keywordWrapper.className = "keyword-wrapper";
+
+        const keywordText = document.createElement("div");
+        keywordText.className = "keyword-text";
+        keywordText.innerText = keyword;
+
+        const deleteHistoryBtn = document.createElement("div");
+        deleteHistoryBtn.className = "delete-history-btn";
+        deleteHistoryBtn.innerText = "X";
+
+        keywordWrapper.addEventListener("click", (e) => {
+          if (
+            e.target.className == "keyword-wrapper" ||
+            e.target.className == "keyword-text"
+          ) {
+            this.onSearch(keyword);
+          } else if (e.target.className == "delete-history-btn") {
+            this.deleteHistoryKeword(keyword);
+          }
         });
-        searchHistory.appendChild(keywordEl);
+        keywordWrapper.appendChild(keywordText);
+        keywordWrapper.appendChild(deleteHistoryBtn);
+        searchHistory.appendChild(keywordWrapper);
       });
     }
 
