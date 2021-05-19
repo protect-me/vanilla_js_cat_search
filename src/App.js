@@ -7,23 +7,33 @@ import { getItem, setItem } from "./util/localStorage.js";
 export default class App {
   constructor($target) {
     let keywordsHistory = getItem("keywordsHistory");
-    if (keywordsHistory == null) {
+    if (keywordsHistory == null || keywordsHistory == "") {
       keywordsHistory = [];
     } else {
       keywordsHistory = keywordsHistory.split(",");
     }
+
+    let initialData = null;
+    const recent = getItem("recent");
+    if (recent != null) {
+      initialData = JSON.parse(recent);
+    }
+
+    const onSearch = async (keyword) => {
+      const loader = new Loader($target); // Loader On
+      const response = await api.fetchCats(keyword);
+      resultSection.setState(response);
+      const recent = JSON.stringify(response);
+      setItem("recent", recent);
+      loader.removeLoader(); // Loader Off
+    };
+
     const searchSection = new SearchSection({
       $target,
-      onSearch: async (keyword) => {
-        const loader = new Loader($target); // Loader On
-        const response = await api.fetchCats(keyword);
-        console.log(response);
-        resultSection.setState(response);
-        loader.removeLoader(); // Loader Off
-      },
+      onSearch,
       keywordsHistory,
     });
 
-    const resultSection = new ResultSection($target, null);
+    const resultSection = new ResultSection($target, initialData);
   }
 }
