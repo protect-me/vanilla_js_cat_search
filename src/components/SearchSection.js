@@ -15,6 +15,7 @@ export default class SearchSection {
     const searchBox = document.createElement("input");
     searchBox.className = "search-box";
     searchBox.placeholder = "고양이를 검색해주세요";
+    searchBox.autofocus = true;
 
     // input 태그 내에서 Enter 키를 입력할 경우
     // searchByKeyword 함수에 keyword를 넣어 실행
@@ -26,6 +27,9 @@ export default class SearchSection {
         const keyword = searchBox.value;
         this.onSearch(keyword);
       }
+    });
+    searchBox.addEventListener("click", () => {
+      searchBox.value = "";
     });
 
     wrapper.appendChild(searchBox);
