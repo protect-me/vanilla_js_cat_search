@@ -1,3 +1,5 @@
+
+
 .search-section {
   display: flex;
   justify-content: center;
@@ -42,4 +44,63 @@
 
 .initial-result, .no-result {
   text-align: center;
+}
+
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: rgb(0, 0, 0, 0.5);
+  border: 6px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border: 4px solid green;
+}
+
+.modal-contents {
+  position: relative;
+  border: 5px solid blue;
+  background-color: #fff;
+  height: 70%;
+  width: 500px;
+  padding: 30px;
+  display: flex;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.modal-close-btn {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal-image {
+  max-width: 100%;
+  height: 400px;
+}
+
+@media (max-width: 650px) {
+  .modal-contents {
+    width: 100%;
+    height: 100%;
+  }
+  .modal-image {
+    width: 70%;
+  }
 }

@@ -1,4 +1,7 @@
+import api from "../api/api.js";
 import Card from "./Card.js";
+import InfoModal from "./InfoModal.js";
+import Loader from "./Loader.js";
 
 export default class ResultSection {
   constructor($target, data) {
@@ -12,6 +15,7 @@ export default class ResultSection {
     this.data = newData;
     this.render();
   }
+
   render() {
     this.section.innerHTML = ""; // result section 초기화
 
@@ -30,6 +34,17 @@ export default class ResultSection {
       cardContainer.className = "card-container";
       this.data.map((cat) => {
         new Card(cardContainer, cat);
+      });
+      cardContainer.addEventListener("click", async (e) => {
+        const clickedCard = e.path.find((item) => item.className == "card");
+
+        if (clickedCard) {
+          const loader = new Loader(document.querySelector("#App")); // Loader On
+          const id = clickedCard.dataset.id;
+          const info = await api.fetchMoreInfo(id);
+          const infoModal = new InfoModal(info);
+          loader.removeLoader(); // Loader Off
+        }
       });
       this.section.appendChild(cardContainer);
     }

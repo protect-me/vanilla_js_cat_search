@@ -31,6 +31,9 @@ const api = {
   fetchCats: (keyword) => {
     return request(`${API_ENDPOINT}/api/cats/search?q=${keyword}`);
   },
+  fetchMoreInfo: (id) => {
+    return request(`${API_ENDPOINT}/api/cats/${id}`);
+  },
 };
 
 export default api;
