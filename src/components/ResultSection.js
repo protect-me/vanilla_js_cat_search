@@ -8,23 +8,25 @@ export default class ResultSection {
     this.section = document.createElement("section");
     this.section.className = "result-section";
     this.data = data;
+    this.lastIdx = 0;
     $target.appendChild(this.section);
     this.render();
-    this.initiateObserver();
+    this.lazyLoadObserver();
   }
 
   setState(newData) {
     this.data = newData;
     this.render();
-    this.initiateObserver();
+    this.lazyLoadObserver();
   }
 
-  initiateObserver() {
+  lazyLoadObserver() {
     const options = { threshold: 0 };
     const callback = (entries, observer) => {
       entries.forEach((entry) => {
-        if (entry.isInterecting) {
+        if (entry.isIntersecting) {
           observer.unobserve(entry.target);
+          entry.target.src = entry.target.dataset.src;
         }
       });
     };
